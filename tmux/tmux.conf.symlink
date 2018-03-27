@@ -1,1 +1,38 @@
-/home/saeed/.tmux.conf
+# remap prefix to Control + a
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+
+# force a reload of the config file
+unbind r
+bind r source-file ~/.tmux.conf
+
+# quick pane cycling
+unbind ^A
+bind ^A select-pane -t :.+
+
+# split panes using | and -
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+## switch panes using Alt-arrow without prefix
+#Switching between panes is one of the most frequent tasks when using tmux. 
+#Therefore it should be as easy as possible. I’m not quite fond of triggering the prefix key all the time. 
+#I want to be able to simply say M-<direction> to go where I want to go (remember: M is for Meta, which is usually your Alt key). 
+#With this modification I can simply press Alt-left to go to the left pane (and other directions respectively):
+
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# Enable mouse control (clickable windows, panes, resizable panes)
+set -g mouse-select-window on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+
+# Enable mouse mode (tmux 2.1 and above)
+#set -g mouse on
+
