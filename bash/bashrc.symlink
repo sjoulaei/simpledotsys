@@ -9,3 +9,24 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+
+# Bind some keys
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+
+#set case insensitivity to LESS
+export LESS="-I --old-bot"
+
+# save all commands
+export HISTCONTROL='ignoreboth:erasedups'
+export HISTTIMEFORMAT="%Y-%m-%d %H:%M:%S "
+CMDHISTFILE="$HOME/.history.log"
+USRNAME=`who am i`
+PROMPT_COMMAND="echo \"${USRNAME}\" >> $CMDHISTFILE;history 1 >> $CMDHISTFILE;$PROMPT_COMMAND"
+
+# fix path issues since upgrade from 5.2 to 5.3
+# /usr/kerberos/sbin:/usr/kerberos/bin:/usr/bin:/bin
+# PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin
+# export PATH
+myip=$(ifconfig | egrep -m 1 'inet '|awk '{print $2}'|awk -F: '{print $2}'|head -1)
+PS1='\n[\d \t - $(tty)]\n[\u@\[\033[01;31m\]\h-$(echo ${myip})\[\033[00m\]: \w ]\n\$ '
