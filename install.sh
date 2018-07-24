@@ -3,7 +3,7 @@
 . "bin/common.sh"
 
 
-dsudo yum install -y epel-release git tmux vim
+sudo yum install -y epel-release git tmux vim
 pwd=$(pwd)
 ln -vsf $pwd/vim/vimrc.symlink ~/.vimrc
 ln -vsf $pwd/vim/.vim ~/.vim
