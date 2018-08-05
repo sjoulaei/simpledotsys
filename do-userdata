@@ -5,9 +5,9 @@
 username=my-username
 password=my-p@ssw0rd!
 cd /opt/
-curl -O curl -O https://raw.githubusercontent.com/sjoulaei/simpledotsys/master/addsuser.sh
-chmod u+x addsuser.sh
-sh addsuser.sh $username $password
+curl -O curl -O https://raw.githubusercontent.com/sjoulaei/simpledotsys/master/add_super_user.sh
+chmod u+x add_super_user.sh
+sh add_super_user.sh $username $password
 
 yum -y install git
 
