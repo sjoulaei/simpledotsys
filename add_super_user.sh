@@ -11,3 +11,7 @@ adduser $username
 echo $username:$password | chpasswd
 usermod -aG wheel $username
 
+#make it nopassword for sudo
+echo -e "\033[32mupdate visudo to NOPASSWORD for wheel group\033[0m"
+sed -i "$ a "## Next Line Added by simpledotsys" /etc/sudoers
+sed -i "$ a $username ALL=(ALL)       NOPASSWD: ALL" /etc/sudoers && echo 'sudoers updated Successfully' || echo 'sudoers update failed'
