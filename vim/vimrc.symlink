@@ -8,4 +8,5 @@ filetype plugin on " load the plugins for specific file types
 colorscheme candy " set color scheme, must be installed first
 set background=dark " dark background for console
 syntax on " enable syntax highlighting
+set number " display line numbers 
 set mouse=a " make line numbers not selectable by mouse
