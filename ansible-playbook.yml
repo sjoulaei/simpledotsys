@@ -1,0 +1,60 @@
+---
+# test playbook file to do the same thing.
+- name: install and run my services
+  hosts: web
+  remote_user: saeed
+  become_method: sudo
+  become_user: root
+  vars:
+   http_port: 80
+   max_clients: 200
+
+tasks:
+#
+#- name: install httpd
+#  yum:
+#        name: httpd
+#        state: latest
+# - name: write apache config file
+#   template:
+#        src: srv/httpd.j2
+#        dest: /etc/httpd.conf
+#  notify:
+#  - restart apache
+#
+# - name: start httpd
+#   service:
+#        name: httpd
+#        state: running
+  - name: enable selinux
+    command: /sbin/setenforce Permissive
+
+  - name: install vmware tools
+    yum:
+        name: open-vm-tools
+        state: latest
+
+  - name: install epel package repository
+    yum:
+        name: epel-release
+        state: latest
+
+  - name: install git
+    yum:
+        name: git
+        state: latest
+
+  - name: install tmux
+    yum:
+        name: tmux
+        state: latest
+
+  - name: install vim
+    yum:
+        name: vim
+        state: latest
+
+
+#handlers:
+#- name: restart apache
+#  service:
